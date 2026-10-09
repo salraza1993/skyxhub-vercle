@@ -1,10 +1,13 @@
 'use client'
 
 import { useState } from "react";
+import { TurnstileCaptcha } from './../TurnstileCaptcha';
 
 function ShortContactForm() {
+  const [token, setToken] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    userName: '',
+    fullName: '',
     email: '',
     phone: '',
     subject: '',
@@ -24,8 +27,9 @@ function ShortContactForm() {
   }
 
   const resetForm = () => {
+    setLoading(false);
     setFormData({
-      userName: '',
+      fullName: '',
       email: '',
       phone: '',
       subject: '',
@@ -35,6 +39,8 @@ function ShortContactForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!token) return alert('Captcha not verified');
+    setLoading(true);
     if(!isFormValid()) {
       setFormErrors('Please fill in all fields.');
       return;
@@ -42,13 +48,13 @@ function ShortContactForm() {
     const response = await fetch('/api/send-email', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ formType: 'contactPage', formData }),
+      body: JSON.stringify({ formType: 'home-page-form', formData, token }),
     });
 
     resetForm();
     setFormErrors(false);
     if (response.ok) {
-      setIsFormSubmitted('Form submitted successfully!, \n we will get back to you shortly');
+      setIsFormSubmitted('Form submitted successfully! We will get back to you shortly.');
       setTimeout(() => setIsFormSubmitted(false), 3000);
     } else {
       setIsFormSubmitted(false);
@@ -68,11 +74,11 @@ function ShortContactForm() {
                 </label>
                 <input
                   required
-                  value={formData.userName}
+                  value={formData.fullName}
                   onChange={(e) => inputOnChange(e)}
                   type="text"
-                  id="userName"
-                  name="userName"
+                  id="fullName"
+                  name="fullName"
                   className="mil-input"
                   placeholder="Enter Your Name Here"
                 />
@@ -183,6 +189,7 @@ function ShortContactForm() {
             </div>
           </div>
         )}
+        <TurnstileCaptcha onVerify={setToken} />
         <div className="col-12">
           <button type="submit" className="mil-button mil-button-light mil-border mil-fw">
             <span>Send Message Now</span>

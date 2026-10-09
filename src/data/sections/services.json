@@ -5,9 +5,9 @@
         "items": [
             {
                 "num": "01",
-                "name": "SkyXhub Marketplace",
-                "icon": "img/icons/md/1.svg",
-                "text": "A SaaS based Travel agent portal A NEXT-GENERATION B2B TRAVEL ECOSYSTEM DESIGNED TO EMPOWER agencies with centralized access to global inventory, seamless booking workflows, and intelligent management tools."
+                "name": "White Label Travel Platform",
+                "icon": "img/icons/md/4.svg",
+                "text": "A fully own branded solution, rapidly deployable digital storefront that enables agencies to launch their own B2B Travel Portal with minimal infrastructure overhead."
             },
             {
                 "num": "02",
@@ -28,9 +28,9 @@
         "items": [
             {
                 "num": "04",
-                "name": "White Label Travel Platform",
-                "icon": "img/icons/md/4.svg",
-                "text": "A fully own branded solution, rapidly deployable digital storefront that enables agencies to launch their own B2B Travel Portal with minimal infrastructure overhead."
+                "name": "Enterprise",
+                "icon": "img/icons/md/6.svg",
+                "text": "<ul class=\"mil-list mil-list-pills mil-list--small mil-light-soft\"><li class=\"mil-list-item\">OTA / B2B / B2B2B /B2C</li><li class=\"mil-list-item\">Travel Booking Solutions</li><li class=\"mil-list-item\">NDC API Integration</li><li class=\"mil-list-item\">Payment Gateway Integration</li><li class=\"mil-list-item\">Non-Air Content</li><li class=\"mil-list-item\">Hotel Bookings</li><li class=\"mil-list-item\">Hotel Extranet</li><li class=\"mil-list-item\">Hotel Contracting Module</li><li class=\"mil-list-item\">Tours</li><li class=\"mil-list-item\">Transfers</li><li class=\"mil-list-item\">Travel technology</li><li class=\"mil-list-item\">Inventory Management</li><li class=\"mil-list-item\">Block Seat Selling Module</li><li class=\"mil-list-item\">Group Request</li><li class=\"mil-list-item\">Software development & Consulting</li></ul>"
             },
             {
                 "num": "05",
@@ -40,9 +40,9 @@
             },
             {
                 "num": "06",
-                "name": "Enterprise",
-                "icon": "img/icons/md/6.svg",
-                "text": "<ul class=\"mil-list mil-list-pills mil-list--small mil-light-soft\"><li class=\"mil-list-item\">OTA / B2B / B2B2B /B2C</li><li class=\"mil-list-item\">Travel Booking Solutions</li><li class=\"mil-list-item\">NDC API Integration</li><li class=\"mil-list-item\">Payment Gateway Integration</li><li class=\"mil-list-item\">Non-Air Content</li><li class=\"mil-list-item\">Hotel Bookings</li><li class=\"mil-list-item\">Hotel Extranet</li><li class=\"mil-list-item\">Hotel Contracting Module</li><li class=\"mil-list-item\">Tours</li><li class=\"mil-list-item\">Transfers</li><li class=\"mil-list-item\">Travel technology</li><li class=\"mil-list-item\">Inventory Management</li><li class=\"mil-list-item\">Block Seat Selling Module</li><li class=\"mil-list-item\">Group Request</li><li class=\"mil-list-item\">Software development & Consulting</li></ul>"
+                "name": "SkyXhub Marketplace (Coming Soon)",
+                "icon": "img/icons/md/1.svg",
+                "text": "A SaaS based Travel agent portal A NEXT-GENERATION B2B TRAVEL ECOSYSTEM DESIGNED TO EMPOWER agencies with centralized access to global inventory, seamless booking workflows, and intelligent management tools."
             }
         ]
     }

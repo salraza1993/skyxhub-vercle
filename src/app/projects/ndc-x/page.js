@@ -2,7 +2,7 @@ import PageBanner from "@/src/components/PageBanner";
 import Layouts from "@/src/layouts/Layouts";
 
 function ProjectDetails() {
-  const bannerTitle = 'NDC-X - B2B2B Portal (NSAS Tourism)'
+  const bannerTitle = 'NDC-X - B2B2B Portal'
   const projectInfo = [
     {key: 'Client', value: 'NSAS Tourism'},
     {key: 'Service', value: 'Website development and B2B2B platform'},
@@ -82,6 +82,8 @@ function ProjectDetails() {
               </p>
             </div>
           </div>
+          <br />
+          <a href="https://ndc-x.com/" target="_blank" className="mil-button mil-border mil-mb-30"><span>Visit Website</span></a>
         </div>
       </section>
     </Layouts>

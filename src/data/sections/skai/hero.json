@@ -1,0 +1,25 @@
+{
+  "breadcrumb": [
+    { "label": "Home", "href": "/" },
+    { "label": "AI & Robotics", "href": "/skai" },
+    { "label": "SKAI" }
+  ],
+  "eyebrow": "SkyXHub AI & Robotics — Future of Physical Intelligence",
+  "title": [
+    { "text": "ARTIFICIAL INTELLIGENCE THAT ", "light": true },
+    { "text": "WORKS. PHYSICAL INTELLIGENCE", "accent": true },
+    { "text": " THAT MOVES.", "light": true }
+  ],
+  "description": "SkyXHub extends AI beyond software into the physical world through humanoid robotics, automation, and intelligent interaction.",
+  "ctas": [
+    { "label": "Request Demo", "variant": "primary", "arrow": true },
+    { "label": "Book SKAI", "variant": "outline", "arrow": false }
+  ],
+  "scrollLabel": "Scroll to explore ↓",
+  "statusCards": {
+    "online": { "title": "SKAI · Online", "subtitle": "Conversation mode active" },
+    "intent": { "label": "Detected intent", "value": "Event Assistance", "confidence": "Confidence 0.97" },
+    "listening": { "label": "Listening…" },
+    "languages": { "label": "Multilingual", "items": ["EN", "AR", "FR", "ZH", "HI"], "active": "AR" }
+  }
+}

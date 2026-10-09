@@ -1,0 +1,16 @@
+{
+  "eyebrow": "Get Started with SKAI",
+  "title": [
+    { "text": "BRING AI INTO THE ", "light": true },
+    { "text": "PHYSICAL WORLD", "accent": true }
+  ],
+  "description": "Request a live demonstration or book SKAI for your next event, venue or campaign.",
+  "ctas": [
+    { "label": "Request Demo", "variant": "primary", "arrow": true },
+    { "label": "Book SKAI", "variant": "outline", "arrow": false }
+  ],
+  "contacts": {
+    "email": "info@skyxhub.com",
+    "phone": "+971 4 338 8171"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "eyebrow": "Interactive Demo",
+  "title": [
+    { "text": "See How " },
+    { "text": "SKAI Interacts", "accent": true }
+  ],
+  "description": "Example conversations showing how SKAI greets, informs, assists and represents your brand.",
+  "agent": { "name": "SKAI", "status": "Online" },
+  "tabs": [
+    { "id": "greetings", "label": "Greetings", "icon": "sparkles" },
+    { "id": "product", "label": "Product Information", "icon": "message" },
+    { "id": "event", "label": "Event Assistance", "icon": "calendar" },
+    { "id": "brand", "label": "Brand Ambassador", "icon": "megaphone" }
+  ],
+  "conversations": {
+    "greetings": {
+      "messages": [
+        { "from": "skai", "text": "Hello and welcome to SkyXHub! I’m SKAI. How can I help you today?" },
+        { "from": "user", "text": "Hi SKAI! Can we talk in Arabic?" },
+        { "from": "skai", "text": "Of course! I can switch between Arabic, English, French, Hindi and Chinese anytime." }
+      ],
+      "suggestions": ["Tell me about SkyXHub", "Switch language"]
+    },
+    "product": {
+      "messages": [
+        { "from": "user", "text": "What does your B2B travel portal offer?" },
+        { "from": "skai", "text": "Multi-GDS and NDC content, real-time ticketing and reporting — all in one white-label portal." },
+        { "from": "user", "text": "Can I see it in action?" }
+      ],
+      "suggestions": ["Book a demo", "Send me details"]
+    },
+    "event": {
+      "messages": [
+        { "from": "user", "text": "Where is the keynote session?" },
+        { "from": "skai", "text": "The keynote starts at 2:00 PM in Hall A — a 3-minute walk. Follow me and I’ll guide you." }
+      ],
+      "suggestions": ["Show agenda", "Find restrooms"]
+    },
+    "brand": {
+      "messages": [
+        { "from": "skai", "text": "Introducing our newest launch! Scan the code on my screen for an exclusive offer." },
+        { "from": "user", "text": "Nice — can you take a photo with me?" },
+        { "from": "skai", "text": "Absolutely! Smile in 3… 2… 1!" }
+      ],
+      "suggestions": ["Scan offer", "Share photo"]
+    }
+  },
+  "cta": { "label": "Try a Live Demo", "variant": "outline" }
+}

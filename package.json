@@ -6,16 +6,19 @@
     "dev": "next dev",
     "dev:scss": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "node server.js",
+    "export": "next export",
+    "lint": "next lint",
+    "check:skai": "node scripts/check-skai.mjs"
   },
   "dependencies": {
     "@sendgrid/mail": "^8.1.5",
     "dotenv": "^17.2.1",
+    "express": "^4.18.2",
     "gray-matter": "^4.0.3",
-    "next": "15.4.5",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "next": "16.1.4",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
     "remark-html": "^15.0.2",
     "swiper": "^9.0.0"
   },

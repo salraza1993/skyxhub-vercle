@@ -23,15 +23,15 @@ const SkillsSection = () => {
           {Content.items.map((item, key) => (
             <div className="col-md-6 col-xl-3" key={`skills-i-${key}`}>
               <h6 className="mil-mb-30">{item.label}</h6>
-              <div className="mil-skill-frame mil-mb-60">
+              {/* <div className="mil-skill-frame mil-mb-60">
                 <div className="mil-skill-track">
                   <div
                     className="mil-skill-prog"
                     style={{ width: item.value + "%" }}
                   />
                 </div>
-                {/* <div className="mil-text-sm mil-dark">{item.value}%</div> */}
-              </div>
+                <div className="mil-text-sm mil-dark">{item.value}%</div>
+              </div> */}
             </div>
           ))}
 

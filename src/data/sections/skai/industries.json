@@ -1,0 +1,24 @@
+{
+  "eyebrow": "Industries",
+  "title": [
+    { "text": "Built for Industries That " },
+    { "text": "Engage People", "accent": true }
+  ],
+  "description": "From airport terminals to government service centres, SKAI adapts its knowledge, language and behaviour to each environment.",
+  "linkLabel": "Explore use cases",
+  "items": [
+    { "number": "01", "icon": "globe", "title": "Travel", "text": "Agency and airport concierge, trip guidance and booking assistance." },
+    { "number": "02", "icon": "plane", "title": "Aviation", "text": "Terminal wayfinding, lounge hosting and passenger assistance." },
+    { "number": "03", "icon": "compass", "title": "Tourism", "text": "Multilingual guides for attractions, museums and visitor centres." },
+    { "number": "04", "icon": "hotel", "title": "Hospitality", "text": "Lobby greeting, check-in support and guest concierge." },
+    { "number": "05", "icon": "bag", "title": "Retail", "text": "Product discovery, promotions and in-store engagement." },
+    { "number": "06", "icon": "landmark", "title": "Government", "text": "Citizen service centres, smart-city showcases and national events." },
+    { "number": "07", "icon": "building", "title": "Enterprise", "text": "Reception, showrooms, HQ experiences and innovation labs." }
+  ],
+  "custom": {
+    "icon": "bot",
+    "title": "Your industry?",
+    "text": "Tell us your environment — we’ll tailor SKAI to it.",
+    "linkLabel": "Talk to an expert"
+  }
+}

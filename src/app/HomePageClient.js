@@ -11,12 +11,14 @@ import ServicesSection from "../components/sections/Services";
 import SkillsSection from "../components/sections/Skills";
 import LatestProjectsSlider from "../components/sliders/LatestProjects.js";
 import HeroSlideshowSlider from "../components/sliders/HeroSlideshow.js";
+import SkaiTeaser from "../components/sections/skai/SkaiTeaser";
 
 // Client Component - handles interactive elements
 export default function HomePageClient({ posts, projects }) {
   return (
     <Layouts transparent>
       <HeroSlideshowSlider />
+      <SkaiTeaser />
       <PartnersSection />
       <Divider />
       <ServicesSection />

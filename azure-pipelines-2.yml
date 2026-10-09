@@ -1,0 +1,44 @@
+# Node.js with gulp
+# Build a Node.js project using the gulp task runner.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  NODE_ENV: production
+
+steps:
+# 1️⃣ Use Node.js 20 (REQUIRED for Next.js)
+- task: NodeTool@0
+  displayName: 'Use Node.js 20'
+  inputs:
+    versionSpec: '20.x'
+
+# 2️⃣ Install dependencies
+- script: |
+    npm ci
+  displayName: 'Install dependencies'
+
+# 3️⃣ Build Next.js app
+- script: |
+    npm run build
+  displayName: 'Build application'
+
+# 4️⃣ Verify build output
+- script: |
+    ls -la
+    ls -la .next || true
+  displayName: 'Verify build output'
+
+# 5️⃣ Publish build artifacts
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Next.js build'
+  inputs:
+    PathtoPublish: '.next'
+    ArtifactName: 'next-build'
+    publishLocation: 'Container'

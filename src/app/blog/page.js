@@ -19,23 +19,27 @@ export default function BlogPage() {
       <section className="mil-p-120-60">
         <div className="container">
           <div className="row">
-            {posts.map((post, index) => (
-              <div key={index} className="col-lg-6 col-xl-4">
-                <div className="mil-blog-card mil-mb-60">
-                  <div className="mil-cover mil-mb-30">
-                    <img src={`/img/blog/${post.id}.jpg`} alt={post.title} />
-                    <div className="mil-date">
-                      <div className="mil-day">{new Date(post.date).getDate()}</div>
-                      <div className="mil-month">
-                        {new Date(post.date).toLocaleDateString('en', { month: 'short' })}
-                      </div>
-                    </div>
+            {posts.map((post) => (
+              <div key={post.id} className="col-lg-6 col-xl-4">
+                {/* Theme post card. Not a link yet: there is no /blog/[id] route. */}
+                <div className="mil-card mil-mb-60">
+                  <div className="mil-cover-frame">
+                    <img src={`/${post.image.replace(/^\//, "")}`} alt={post.title} />
                   </div>
                   <div className="mil-description">
-                    <h4 className="mil-mb-15">
-                      <a href={`/blog/${post.id}`}>{post.title}</a>
-                    </h4>
-                    <p>{post.excerpt || 'Blog post excerpt...'}</p>
+                    <div className="mil-fw-descr">
+                      <h4 className="mil-mb-15">{post.title}</h4>
+                      <h6 className="mil-mb-15">
+                        {new Date(post.date).toLocaleDateString("en", { day: "numeric", month: "short", year: "numeric" })}
+                        {post.author && (
+                          <>
+                            {" · by "}
+                            <span className="mil-accent-2">{post.author}</span>
+                          </>
+                        )}
+                      </h6>
+                      <p>{post.short}</p>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -1155,23 +1155,23 @@ partners
 ------------------------------------------- */
 .mil-partners-frame {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
+	gap: 20px;
 
 	@media screen and (max-width: 768px) {
 		padding: 0;
 	}
 
 	& a, span {
-		width: 180px;
+		width: 200px;
+		height: 70px;
 		position: relative;
 		cursor: pointer;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		// filter: grayscale(100%);
-		margin-bottom: 30px;
 
 		@media screen and (max-width: 1200px) {
 			width: 33.333%;

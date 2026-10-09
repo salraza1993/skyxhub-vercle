@@ -1,0 +1,51 @@
+{
+  "eyebrow": "Robot As A Service (RAAS)",
+  "title": [
+    { "text": "Flexible Access to " },
+    { "text": "Intelligent Robotics", "accent": true }
+  ],
+  "description": "No capital investment. No technical overhead. Choose the engagement model that fits your event, campaign or venue — SkyXHub handles deployment, content and support.",
+  "plans": [
+    {
+      "tag": "Single-day activation",
+      "name": "Event Day",
+      "description": "Perfect for one-off corporate events, launches and conferences.",
+      "price": "Custom",
+      "priceNote": "/ tailored quote",
+      "features": ["On-site SKAI deployment", "Custom greeting & branded script", "Dedicated SkyXHub operator", "Post-event engagement summary"],
+      "cta": { "label": "Request Quote", "variant": "outline" },
+      "featured": false
+    },
+    {
+      "tag": "Multi-day & multi-location",
+      "name": "Campaign",
+      "description": "For exhibitions, roadshows and marketing activations.",
+      "price": "Custom",
+      "priceNote": "/ tailored quote",
+      "features": ["Everything in Event Day", "Custom AI knowledge base", "Multilingual conversation content", "Lead capture & engagement analytics", "Branding & wrap options"],
+      "cta": { "label": "Book SKAI", "variant": "primary" },
+      "featured": true,
+      "badge": "Most Popular"
+    },
+    {
+      "tag": "Monthly & annual",
+      "name": "Long-Term Placement",
+      "description": "Permanent presence in lobbies, terminals and experience centres.",
+      "price": "Custom",
+      "priceNote": "/ tailored quote",
+      "features": ["Permanent installation", "Enterprise system integration", "Remote monitoring & updates", "Priority maintenance & support", "Quarterly performance insights"],
+      "cta": { "label": "Talk to Sales", "variant": "outline" },
+      "featured": false
+    }
+  ],
+  "useCasesTitle": "Use Cases",
+  "useCasesNote": "Every plan adapts to your use case",
+  "useCases": [
+    { "icon": "calendar", "label": "Corporate Events" },
+    { "icon": "booth", "label": "Exhibitions" },
+    { "icon": "hotel", "label": "Hospitality" },
+    { "icon": "bag", "label": "Retail" },
+    { "icon": "megaphone", "label": "Marketing Activations" },
+    { "icon": "building", "label": "Customer Experience Centers" }
+  ]
+}

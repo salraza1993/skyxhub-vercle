@@ -1,0 +1,20 @@
+{
+  "eyebrow": "Introducing SKAI — AI & Robotics by SkyXHub",
+  "title": [
+    { "text": "Meet " },
+    { "text": "SKAI", "accent": true },
+    { "text": ", Our AI-Powered " },
+    { "text": "Humanoid Robot", "accent": true }
+  ],
+  "description": "The AI-powered humanoid robot developed by SkyXHub Technologies — bringing real-time conversation, multilingual support and physical intelligence to events, hospitality and enterprise spaces.",
+  "features": ["Real-Time AI Conversations", "Multilingual Support", "Physical Intelligence", "Robot As A Service (RAAS)"],
+  "ctas": [
+    { "label": "Discover SKAI", "href": "/skai", "variant": "primary", "arrow": true },
+    { "label": "Book A Demo", "href": "/contact", "variant": "outline", "arrow": false }
+  ],
+  "hotspots": [
+    { "label": "Humanoid Robot", "position": "top-right" },
+    { "label": "Conversational AI", "position": "left" },
+    { "label": "RAAS Ready", "position": "right" }
+  ]
+}

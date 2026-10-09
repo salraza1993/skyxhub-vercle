@@ -26,6 +26,18 @@ const LatestProjects = ({ projects }) => {
       image: 'img/projects/3.jpg',
       short: 'A trusted platform delivering top-notch aviation services, tailored solutions, and seamless experiences for all your aviation needs.'
     },
+    {
+      title: 'NebuJets',
+      path: 'projects/nebujets',
+      image: 'img/projects/4.jpg',
+      short: 'NEBU Jets redefines luxury and corporate private jet travel, delivering exceptional service and unmatched professionalism.'
+    },
+    {
+      title: 'Elite Motion Car Rental',
+      path: 'projects/elitemotion',
+      image: 'img/projects/5.jpg',
+      short: 'Explore a premium collection of luxury cars, thoughtfully curated by category to match your personality, lifestyle, and the kind of driving experience you’ve always imagined.'
+    },
   ]);
   return (
     <section className="mil-works mil-p-120-90">

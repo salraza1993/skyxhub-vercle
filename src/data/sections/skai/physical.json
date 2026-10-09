@@ -1,0 +1,98 @@
+{
+  "eyebrow": "Physical Intelligence",
+  "title": [
+    {
+      "text": "Intelligence You Can See "
+    },
+    {
+      "text": "in Motion",
+      "accent": true
+    }
+  ],
+  "description": "SKAI perceives people and its surroundings, then responds with purposeful movement — from a friendly wave to guiding guests where they need to go.",
+  "steps": [
+    {
+      "id": "detect",
+      "number": "01",
+      "title": "Detect",
+      "text": "Senses a guest approaching",
+      "image": {
+        "src": "/img/skai/robots/stand.png",
+        "width": 445,
+        "height": 1200
+      }
+    },
+    {
+      "id": "greet",
+      "number": "02",
+      "title": "Greet",
+      "text": "Waves and starts the conversation",
+      "image": {
+        "src": "/img/skai/robots/greeting.png",
+        "width": 425,
+        "height": 600
+      }
+    },
+    {
+      "id": "recognise",
+      "number": "03",
+      "title": "Recognise",
+      "text": "Reads gestures and responds",
+      "highlighted": true,
+      "image": {
+        "src": "/img/skai/robots/danding.png",
+        "width": 314,
+        "height": 616
+      }
+    },
+    {
+      "id": "guide",
+      "number": "04",
+      "title": "Guide",
+      "text": "Points the way to destinations",
+      "image": {
+        "src": "/img/skai/robots/stand-reverse.png",
+        "width": 372,
+        "height": 800
+      }
+    },
+    {
+      "id": "act",
+      "number": "05",
+      "title": "Act",
+      "text": "Completes the requested action",
+      "image": {
+        "src": "/img/skai/robots/sitting.png",
+        "width": 382,
+        "height": 600
+      }
+    }
+  ],
+  "capabilities": [
+    {
+      "icon": "hand",
+      "title": "Gesture Recognition",
+      "text": "Understands waves, pointing and hand signals."
+    },
+    {
+      "icon": "activity",
+      "title": "Motion Intelligence",
+      "text": "Smooth, safe and purposeful movement."
+    },
+    {
+      "icon": "sparkles",
+      "title": "Interactive Responses",
+      "text": "Expressive reactions in voice and motion."
+    },
+    {
+      "icon": "users",
+      "title": "Human Engagement",
+      "text": "Eye-level presence that builds trust."
+    },
+    {
+      "icon": "cpu",
+      "title": "Smart Actions",
+      "text": "Triggers tasks across connected systems."
+    }
+  ]
+}

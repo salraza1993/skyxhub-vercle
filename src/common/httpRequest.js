@@ -3,7 +3,7 @@ export const httpRequest = async (url, options = {}) => {
     const response = await fetch(url, {
       ...options,
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "multipart/form-data",
         ...options.headers,
       },
     });

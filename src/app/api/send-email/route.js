@@ -1,42 +1,79 @@
-import sgMail from '@sendgrid/mail';
+
 import { NextResponse } from 'next/server';
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+async function verifyTurnstileToken(token) {
+  if (!token) {
+    return { success: false, error: 'Captcha token is missing' };
+  }
+
+  if (!process.env.TURNSTILE_SECRET_KEY) {
+    return { success: false, error: 'Captcha secret key is missing' };
+  }
+
+  try {
+    const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        secret: process.env.TURNSTILE_SECRET_KEY,
+        response: token,
+      }),
+    });
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return { success: false, error: 'Captcha verification failed' };
+  }
+}
 
 export async function POST(request) {
-  console.log(request)
-  
   try {
-    // const { firstName, lastName, email, phone, company, role, subject, projectDescription } = await request.json();
-    const { formType, formData } = await request.json();
-     // Different subject based on formType
-    let subject = 'New Form Submission';
-    if (formType === 'contact') subject = 'Contact Form';
-    if (formType === 'contactPage') subject = 'Contact Page Form';
-    if (formType === 'newsletter') subject = 'Newsletter Signup';
+    const { formData, token, formType } = await request.json();
 
-    // Build HTML dynamically
-    const rows = Object.entries(formData)
-      .map(([key, value]) => `<tr><td>${key}</td><td>${value}</td></tr>`)
-      .join('');
+    // Verify Turnstile captcha
+    const captchaResult = await verifyTurnstileToken(token);
+    if (!captchaResult.success) {
+      console.error('Turnstile verification failed', {
+        error: captchaResult.error,
+        errorCodes: captchaResult['error-codes'],
+      });
 
-    const msg = {
-      to: process.env.CONTACT_RECEIVER,
-      from: process.env.SENDGRID_FROM_EMAIL,
-      subject,
-      text: JSON.stringify(formData, null, 2),
-      html: `
-        <h2>${subject}</h2>
-        <table border="1" cellpadding="5" cellspacing="0">
-          ${rows}
-        </table>
-      `,
-    };
+      return NextResponse.json({ 
+        success: false, 
+        error: 'Captcha verification failed', 
+      }, { status: 400 });
+    }
 
-    await sgMail.send(msg);
-    return NextResponse.json({ success: true });
+    let formId = '';
+    if(formType === 'home-page-form') formId = 682;
+    else if(formType === 'newsletter') formId = 683;
+    else { formId = 679; }
+    const wpUrl = `https://admin.nsas-tourism.com/wp-json/contact-form-7/v1/contact-forms/${formId}/feedback`;
+    const requestData = new FormData();
+    Object.keys(formData).forEach(key => {
+      requestData.append(key, formData[key]);
+    });
+
+    requestData.append("_wpcf7_unit_tag", "wpcf7-f679-p2-o1");
+    
+    try {
+      const response = await fetch(wpUrl, { method: 'POST', body: requestData });
+      const data = await response.json();
+      
+      return NextResponse.json({ 
+        success: true, 
+        message: 'Form submitted to WordPress', 
+      });
+    } catch (fetchError) {
+      return NextResponse.json({ 
+        success: false, 
+        error: 'Failed to submit to WordPress', 
+      }, { status: 500 });
+    }
   } catch (err) {
-    console.error('Error sending email:', err);
-    return NextResponse.json({ success: false, error: err.message }, { status: 500 });
+    return NextResponse.json({ success: false, error: err.message, innerError: err }, { status: 500 });
   }
 }

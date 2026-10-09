@@ -1,0 +1,2520 @@
+@use "sass:color";
+@use "variables" as *;
+
+/* -------------------------------------------
+
+SKAI – AI & Robotics page and home teaser.
+Figma: SkyXHub – AI & Robotics Homepage Sections (canvas 11:674).
+Every class is prefixed with .skai-
+
+------------------------------------------- */
+
+$skai-glow: rgba(44, 255, 5, 0.35);
+$skai-glow-soft: rgba(44, 255, 5, 0.12);
+$skai-glow-faint: rgba(44, 255, 5, 0.06);
+$skai-card-bg: rgba(233, 233, 233, 0.05);
+$skai-card-border: rgba(233, 233, 233, 0.1);
+$skai-muted: rgba(233, 233, 233, 0.7);
+
+// ── Base ──
+
+.skai-section {
+  position: relative;
+  padding: 120px 0;
+  background-color: $primary-5;
+  color: $primary-2;
+  font-family: $font-1;
+  overflow-x: clip;
+  scroll-margin-top: 100px;
+
+  p {
+    color: $skai-muted;
+  }
+
+  &--light {
+    background-color: $primary-1;
+    color: $primary-5;
+
+    p {
+      color: $primary-4;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 80px 0;
+  }
+}
+
+.skai-heading {
+  margin: 0;
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 56px;
+  color: inherit;
+  text-transform: none;
+
+  @media screen and (max-width: 992px) {
+    font-size: 36px;
+    line-height: 48px;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+
+.skai-accent {
+  color: $accent-1;
+}
+
+.skai-section--light .skai-accent {
+  color: $accent-2;
+}
+
+.skai-thin {
+  font-weight: 200;
+}
+
+.skai-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 24px;
+  font-size: 16px;
+  font-weight: 500;
+  color: $primary-2 !important;
+
+  &__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: $accent-1;
+    flex-shrink: 0;
+  }
+
+  &--light {
+    color: $primary-5 !important;
+  }
+}
+
+.skai-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  color: $accent-1;
+}
+
+// ── Buttons (Figma 11:686 / 11:692) ──
+
+.skai-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 60px;
+  padding: 0 40px;
+  border-radius: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+
+  &--primary {
+    background-color: $accent-1;
+    color: $primary-5;
+
+    .skai-icon {
+      color: $primary-5;
+    }
+
+    &:hover {
+      box-shadow: 0 0 30px $skai-glow;
+      transform: translateY(-2px);
+    }
+  }
+
+  &--outline {
+    border: 2px solid $accent-2;
+    color: $primary-2;
+
+    &:hover {
+      background-color: $skai-glow-soft;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 52px;
+    padding: 0 28px;
+    font-size: 16px;
+  }
+}
+
+.skai-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+// ── Hotspot (Figma 11:705) ──
+
+.skai-hotspot {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  white-space: nowrap;
+
+  &__plus {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(5px);
+    font-size: 22px;
+    color: $primary-2;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid $accent-1;
+      opacity: 0;
+      animation: skai-pulse 2.4s ease-out infinite;
+    }
+  }
+
+  &__label {
+    font-size: 16px;
+    font-weight: 500;
+    color: $primary-2;
+  }
+}
+
+// ── Check chip (Figma 11:699) ──
+
+.skai-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px 8px 10px;
+  border-radius: 4px;
+  background-color: $lt-10;
+  border: 1px solid $lt-20;
+  font-size: 16px;
+  color: $skai-muted;
+
+  &__check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: rgba(233, 233, 233, 0.8);
+
+    .skai-icon {
+      color: $primary-5;
+    }
+  }
+}
+
+// ── Motion ──
+
+.skai-anim {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+
+  &.skai-in-view {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes skai-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes skai-glow {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes skai-wave {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes skai-dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+// ── Reduced motion (uses !important so it wins regardless of where later rules sit) ──
+
+@media (prefers-reduced-motion: reduce) {
+  [class*="skai-"],
+  [class*="skai-"]::before,
+  [class*="skai-"]::after,
+  [class*="skai-"] * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .skai-anim {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+// ── Hero (Figma 19:936) ──
+
+.skai-hero {
+  min-height: 900px;
+  padding: 150px 0 60px;
+  background: radial-gradient(ellipse 80% 75% at 5% 50%, rgba(31, 42, 34, 1) 0%, $primary-5 100%);
+
+  &__grid {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+
+  &__text {
+    position: relative;
+    z-index: 2;
+    max-width: 640px;
+  }
+
+  .skai-eyebrow {
+    margin: 76px 0 32px;
+  }
+
+  &__title {
+    font-size: 54px;
+    line-height: 70px;
+    font-weight: 700;
+    margin-bottom: 32px;
+  }
+
+  &__description {
+    max-width: 520px;
+    margin: 0 0 32px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  &__scroll {
+    display: inline-block;
+    margin-top: 60px;
+    font-size: 13px;
+    color: $skai-muted;
+
+    &:hover {
+      color: $accent-1;
+    }
+  }
+
+  // Visual stage: Figma coordinates relative to (x 700, y 40) of the 1440 frame.
+  &__stage {
+    position: absolute;
+    top: 40px;
+    left: 48.6%;
+    width: 740px;
+    height: 860px;
+    pointer-events: none;
+
+    img {
+      position: absolute;
+      max-width: none;
+    }
+  }
+
+  &__glow {
+    left: -80px;
+    top: -80px;
+    width: 920px;
+    height: 960px;
+    animation: skai-glow 6s ease-in-out infinite;
+  }
+
+  &__ring {
+    &--lg {
+      left: 120px;
+      top: 0;
+      width: 520px;
+      height: 520px;
+    }
+
+    &--md {
+      left: 180px;
+      top: 60px;
+      width: 400px;
+      height: 400px;
+    }
+
+    &--sm {
+      left: 240px;
+      top: 120px;
+      width: 280px;
+      height: 280px;
+    }
+  }
+
+  &__floor {
+    &--glow {
+      left: 170px;
+      top: 775px;
+      width: 420px;
+      height: 70px;
+    }
+
+    &--lg {
+      left: 190px;
+      top: 778px;
+      width: 380px;
+      height: 65px;
+    }
+
+    &--sm {
+      left: 250px;
+      top: 788px;
+      width: 260px;
+      height: 44px;
+    }
+  }
+
+  // Robot photo: height from Figma, width follows the image, centred on the Figma box.
+  &__robot {
+    left: 380px;
+    top: 95px;
+    width: auto;
+    height: 720px;
+    transform: translateX(-50%);
+  }
+
+  @media screen and (max-width: 1200px) {
+    &__text {
+      max-width: 50%;
+    }
+
+    &__stage {
+      left: 52%;
+      transform: scale(0.8);
+      transform-origin: top left;
+    }
+
+    &__title {
+      font-size: 46px;
+      line-height: 60px;
+    }
+
+    // The floating cards would collide with the headline or run off-screen at this width.
+    .skai-holo {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    min-height: 0;
+    padding-top: 130px;
+
+    &__text {
+      max-width: none;
+    }
+
+    .skai-eyebrow {
+      margin-top: 40px;
+    }
+
+    &__stage {
+      position: relative;
+      top: auto;
+      left: 50%;
+      margin: 40px 0 -380px;
+      transform: translateX(-50%) scale(0.55);
+      transform-origin: top center;
+    }
+
+    .skai-holo {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    &__title {
+      font-size: 34px;
+      line-height: 44px;
+    }
+
+    &__description {
+      font-size: 16px;
+    }
+
+    &__scroll {
+      margin-top: 32px;
+    }
+  }
+}
+
+.skai-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: $skai-muted;
+
+  a {
+    color: $skai-muted;
+
+    &:hover {
+      color: $accent-1;
+    }
+  }
+
+  &__sep {
+    margin: 0 10px;
+  }
+}
+
+// Floating "holo" status cards (Figma 19:1057 / 1062 / 1068 / 1085)
+.skai-holo {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background-color: rgba(20, 23, 25, 0.55);
+  border: 1px solid rgba(44, 255, 5, 0.28);
+  box-shadow: 0 0 30px rgba(44, 255, 5, 0.15);
+  backdrop-filter: blur(9px);
+  white-space: nowrap;
+
+  p {
+    margin: 0;
+  }
+
+  &--status {
+    left: 0;
+    top: 150px;
+  }
+
+  &--intent {
+    left: 550px;
+    top: 200px;
+  }
+
+  &--voice {
+    left: 10px;
+    top: 520px;
+  }
+
+  &--languages {
+    left: 540px;
+    top: 480px;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: $primary-2 !important;
+  }
+
+  &__online {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: $accent-1;
+    box-shadow: 0 0 8px $accent-1;
+  }
+
+  &__small {
+    font-size: 12px;
+  }
+
+  &__value {
+    font-size: 15px;
+    font-weight: 500;
+    color: $primary-2 !important;
+  }
+
+  &__bar {
+    position: relative;
+    width: 150px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.1);
+
+    span {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 140px;
+      border-radius: 2px;
+      background-color: $accent-1;
+    }
+  }
+
+  &__langs {
+    display: flex;
+    gap: 6px;
+
+    span {
+      padding: 3px 8px;
+      border-radius: 4px;
+      background-color: $lt-10;
+      font-size: 12px;
+      font-weight: 500;
+      color: $primary-2;
+    }
+
+    .skai-accent {
+      color: $accent-1;
+    }
+  }
+}
+
+.skai-wave {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 30px;
+
+  span {
+    width: 4px;
+    border-radius: 2px;
+    background-color: $accent-1;
+    transform-origin: center;
+    animation: skai-wave 1.2s ease-in-out infinite;
+  }
+}
+
+// ── Shared section patterns ──
+
+.skai-divider {
+  position: relative;
+  height: 2px;
+  margin-bottom: 56px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0.5px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, $accent-1 110px, transparent 110px, transparent calc(100% - 110px), $accent-1 calc(100% - 110px));
+  }
+}
+
+.skai-head-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 56px;
+
+  > div {
+    max-width: 680px;
+  }
+
+  .skai-eyebrow {
+    margin-bottom: 22px;
+  }
+
+  &__text {
+    max-width: 460px;
+    margin: 0;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  @media screen and (max-width: 992px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+}
+
+.skai-head-center {
+  max-width: 760px;
+  margin: 0 auto 56px;
+  text-align: center;
+
+  .skai-eyebrow {
+    margin-bottom: 22px;
+  }
+
+  p {
+    margin: 22px 0 0;
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+// ── Meet SKAI (Figma 19:1099) ──
+
+// Stage children are positioned in % of the 1270 × 600 Figma frame so the whole scene scales.
+.skai-meet__stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1270 / 600;
+  margin-bottom: 56px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  overflow: hidden;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(34, 51, 31, 1) 0%, rgba(24, 34, 25, 1) 50%, rgba(14, 16, 18, 1) 100%);
+
+  > img {
+    position: absolute;
+    max-width: none;
+  }
+}
+
+.skai-meet {
+  &__light {
+    top: -0.17%;
+    width: 23.62%;
+    height: 100%;
+
+    &--1 {
+      left: 8.58%;
+    }
+
+    &--2 {
+      left: 38.11%;
+    }
+
+    &--3 {
+      left: 67.64%;
+    }
+  }
+
+  &__floor {
+    left: 14.49%;
+    top: 86.5%;
+    width: 70.87%;
+    height: 20%;
+  }
+
+  &__robot {
+    left: 49.92%;
+    top: 6.5%;
+    width: auto;
+    height: 93.6%;
+    transform: translateX(-50%);
+  }
+
+  &__side {
+    top: 29.83%;
+    width: auto;
+    height: 66%;
+    opacity: 0.55;
+    transform: translateX(-50%);
+
+    &--left {
+      left: 25.9%;
+    }
+
+    // Not mirrored: the chest logo would read backwards.
+    &--right {
+      left: 73.94%;
+    }
+  }
+
+  &__fade {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 36.67%;
+    background: linear-gradient(180deg, rgba(14, 16, 18, 0) 0%, rgba(14, 16, 18, 0.9) 100%);
+  }
+
+  &__caption {
+    position: absolute;
+    left: 39px;
+    bottom: 46px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__caption-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: $primary-2 !important;
+  }
+
+  &__caption-tags {
+    font-size: 16px;
+    color: $accent-1 !important;
+  }
+
+  &__hotspot {
+    position: absolute;
+
+    &--left {
+      left: 4.65%;
+      top: 18.17%;
+    }
+
+    &--top-right {
+      left: 59.76%;
+      top: 14.83%;
+    }
+
+    &--right {
+      left: 62.91%;
+      top: 54.83%;
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    &__hotspot {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    &__stage {
+      aspect-ratio: auto;
+      height: 440px;
+    }
+
+    &__light--1,
+    &__light--3,
+    &__side {
+      display: none;
+    }
+
+    &__light--2 {
+      left: 50%;
+      width: 300px;
+      transform: translateX(-50%);
+    }
+
+    &__floor {
+      left: 50%;
+      top: auto;
+      bottom: -40px;
+      width: 600px;
+      height: 80px;
+      transform: translateX(-50%);
+    }
+
+    &__robot {
+      left: 50%;
+      top: 20px;
+      width: auto;
+      height: 400px;
+      transform: translateX(-50%);
+    }
+
+    &__caption {
+      left: 20px;
+      bottom: 24px;
+    }
+
+    &__caption-title {
+      font-size: 22px;
+    }
+
+    &__caption-tags {
+      font-size: 14px;
+    }
+  }
+}
+
+.skai-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.skai-pillar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__line {
+    height: 2px;
+    background: linear-gradient(90deg, $accent-1 50px, transparent 50px, transparent 58px, rgba(255, 255, 255, 0.1) 58px);
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: $primary-2;
+  }
+
+  p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
+
+// Icon tile used in feature lists (Figma 20:1192)
+.skai-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background-color: rgba(44, 255, 5, 0.08);
+  border: 1px solid rgba(44, 255, 5, 0.28);
+}
+
+// ── AI Interaction Engine (Figma 20:956) ──
+
+.skai-engine {
+  background-color: color.mix(#000, $primary-5, 20%);
+
+  &__bg-glow {
+    position: absolute;
+    left: -300px;
+    top: 0;
+    width: 1000px;
+    height: 1000px;
+    max-width: none;
+    pointer-events: none;
+  }
+
+  &__split {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+  }
+
+  // Diagram children positioned in % of the 600 × 560 Figma frame.
+  &__diagram {
+    position: relative;
+    flex: 0 0 600px;
+    aspect-ratio: 600 / 560;
+  }
+
+  &__network {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__core-glow {
+    position: absolute;
+    left: 18.33%;
+    top: 16.07%;
+    width: 63.33%;
+    max-width: none;
+    animation: skai-glow 4s ease-in-out infinite;
+  }
+
+  &__core {
+    position: absolute;
+    left: 40%;
+    top: 39.29%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: $primary-5;
+    border: 2px solid $accent-1;
+    box-shadow: 0 0 50px rgba(44, 255, 5, 0.6);
+  }
+
+  &__label {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    border-radius: 40px;
+    background-color: rgba(20, 23, 25, 0.8);
+    border: 1px solid rgba(44, 255, 5, 0.28);
+    backdrop-filter: blur(6px);
+    font-size: 13px;
+    font-weight: 500;
+    color: $primary-2;
+    white-space: nowrap;
+
+    &::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: $accent-1;
+    }
+
+    &--language {
+      left: 6.67%;
+      top: 12.5%;
+    }
+
+    &--intent {
+      left: 63.33%;
+      top: 19.64%;
+    }
+
+    &--multilingual {
+      left: 73.33%;
+      top: 58.93%;
+    }
+
+    &--realtime {
+      left: 50%;
+      top: 83.93%;
+    }
+
+    &--enterprise {
+      left: 1.67%;
+      top: 71.43%;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__description {
+    margin: 22px 0 40px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__item-text {
+    flex: 1;
+    min-width: 0;
+
+    h3 {
+      margin: 0 0 4px;
+      font-size: 19px;
+      font-weight: 500;
+      color: $primary-2;
+    }
+
+    p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 22px;
+    }
+  }
+
+  &__arrow {
+    opacity: 0.6;
+  }
+
+  @media screen and (max-width: 1200px) {
+    &__split {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 56px;
+    }
+
+    &__diagram {
+      flex-basis: auto;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    &__label {
+      display: none;
+    }
+  }
+}
+
+// ── Physical Intelligence (Figma 20:1258) ──
+
+.skai-tile--sm {
+  width: 44px;
+  height: 44px;
+}
+
+.skai-physical {
+  &__glow {
+    position: absolute;
+    left: 50%;
+    top: 100px;
+    width: 1000px;
+    height: 800px;
+    max-width: none;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  &__sequence {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    margin-bottom: 56px;
+  }
+
+  &__capabilities {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    &__sequence,
+    &__capabilities {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    &__sequence {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 8px;
+
+      .skai-pose-card {
+        flex: 0 0 240px;
+        scroll-snap-align: start;
+      }
+    }
+
+    &__capabilities {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+.skai-pose-card {
+  position: relative;
+  height: 400px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(180deg, rgba(28, 38, 32, 1) 0%, rgba(18, 20, 22, 1) 100%);
+  overflow: hidden;
+
+  &--active {
+    border-color: rgba(44, 255, 5, 0.28);
+  }
+
+  // A 242px-wide stage centred in the card holds the Figma-positioned pose artwork.
+  &__stage {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 242px;
+    height: 320px;
+    margin-left: -121px;
+
+    img {
+      position: absolute;
+      max-width: none;
+    }
+  }
+
+  &__floor {
+    left: 37px;
+    top: 295px;
+    width: 150px;
+    height: 24px;
+  }
+
+  &__pose {
+    left: 121px;
+    bottom: 11px;
+    width: auto;
+    height: 288px;
+    transform: translateX(-50%);
+
+    // A crouching robot stands lower than the others.
+    &--act {
+      height: 230px;
+    }
+  }
+
+  &__scan {
+    left: 37px;
+    top: 47px;
+    width: 150px;
+    height: 120px;
+  }
+
+  &__motion {
+    width: 80px;
+    height: 80px;
+
+    &--greet {
+      left: 149px;
+      top: 19px;
+    }
+  }
+
+  &__fade {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 140px;
+    background: linear-gradient(180deg, rgba(18, 20, 22, 0) 0%, rgba(18, 20, 22, 0.95) 50%, rgba(18, 20, 22, 1) 100%);
+  }
+
+  &__label {
+    position: absolute;
+    left: 19px;
+    right: 19px;
+    top: 319px;
+
+    h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 600;
+      color: $primary-2;
+    }
+
+    p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 19px;
+    }
+  }
+}
+
+.skai-capability {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px 22px;
+  border-radius: 16px;
+  background-color: $lt-10;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  h3 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 500;
+    color: $primary-2;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
+
+// ── Robot As A Service (Figma 21:1020) ──
+
+.skai-btn--block {
+  width: 100%;
+}
+
+.skai-raas {
+  background-color: color.mix(#000, $primary-5, 20%);
+
+  &__glow {
+    position: absolute;
+    left: 50%;
+    top: 180px;
+    width: 900px;
+    height: 800px;
+    max-width: none;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  &__plans {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 56px;
+  }
+
+  &__usecases-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 56px;
+
+    h3 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 600;
+      color: $primary-2;
+    }
+
+    p {
+      margin: 0;
+      font-size: 15px;
+    }
+  }
+
+  &__usecases {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media screen and (max-width: 1200px) {
+    &__plans {
+      grid-template-columns: 1fr;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .skai-plan--featured {
+      order: -1;
+    }
+
+    &__usecases {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    &__usecases-head {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 32px;
+    }
+
+    &__usecases {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+.skai-plan {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 658px;
+  padding: 40px 36px;
+  border-radius: 24px;
+  background-color: $lt-10;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+
+  > * {
+    position: relative;
+  }
+
+  &--featured {
+    border: 1.5px solid $accent-1;
+    background: linear-gradient(180deg, rgba(30, 51, 24, 1) 0%, $primary-5 100%);
+    box-shadow: 0 0 60px rgba(44, 255, 5, 0.18);
+  }
+
+  > .skai-plan__glow {
+    position: absolute;
+    left: 50%;
+    top: -221px;
+    width: 440px;
+    height: 440px;
+    max-width: none;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  &__tag {
+    font-size: 14px;
+    font-weight: 500;
+    color: $accent-1;
+  }
+
+  &__badge {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 5px 12px;
+    border-radius: 40px;
+    background-color: $accent-1;
+    font-size: 12px;
+    font-weight: 600;
+    color: $primary-5;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 600;
+    color: $primary-2;
+  }
+
+  &__description {
+    margin: 0;
+    font-size: 15px;
+    line-height: 23px;
+  }
+
+  &__price {
+    margin: 0;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 15px;
+
+    span {
+      font-size: 40px;
+      font-weight: 300;
+      color: $primary-2;
+    }
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 0 0 auto;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      color: $primary-2;
+    }
+  }
+
+  &__check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: rgba(44, 255, 5, 0.14);
+  }
+
+  @media screen and (max-width: 768px) {
+    min-height: 0;
+    padding: 32px 24px;
+  }
+}
+
+.skai-usecase {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 134px;
+  padding: 22px 20px;
+  border-radius: 16px;
+  background-color: $lt-10;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  color: $primary-2;
+}
+
+// ── Industries (Figma 21:1218, light section) ──
+
+.skai-industries__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skai-industry,
+.skai-industry--custom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 30px 28px;
+  border-radius: 16px;
+
+  h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 23px;
+  }
+}
+
+.skai-industry {
+  background-color: #fff;
+  border: 1px solid rgba(20, 23, 25, 0.08);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 20px 40px rgba(20, 23, 25, 0.08);
+    transform: translateY(-4px);
+  }
+
+  h3 {
+    color: $primary-5;
+  }
+
+  p {
+    color: rgba(20, 23, 25, 0.65) !important;
+  }
+
+  .skai-text-link {
+    color: $primary-5;
+
+    .skai-icon {
+      color: $primary-5;
+    }
+  }
+
+  &__icon {
+    position: relative;
+    width: 44px;
+    height: 44px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 24px;
+      top: 24px;
+      width: 18px;
+      height: 18px;
+      background-color: $accent-1;
+    }
+
+    .skai-icon {
+      position: relative;
+      color: $primary-5;
+    }
+  }
+}
+
+.skai-industry--custom {
+  justify-content: space-between;
+  background-color: $primary-5;
+
+  h3 {
+    color: $primary-2;
+  }
+
+  p {
+    color: $skai-muted !important;
+  }
+
+  .skai-text-link {
+    color: $accent-1;
+  }
+}
+
+.skai-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  font-size: 14px;
+  font-weight: 500;
+
+  .skai-icon {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover .skai-icon {
+    transform: translateX(4px);
+  }
+}
+
+// ── Interactive Demo (Figma 23:1156) ──
+
+.skai-demo {
+  &__glow {
+    position: absolute;
+    max-width: none;
+    pointer-events: none;
+
+    &--left {
+      left: -350px;
+      top: 50px;
+      width: 900px;
+      height: 900px;
+    }
+
+    &--right {
+      right: -360px;
+      top: 300px;
+      width: 900px;
+      height: 800px;
+    }
+  }
+
+  &__tabs {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 56px;
+
+    @media screen and (max-width: 768px) {
+      justify-content: flex-start;
+      overflow-x: auto;
+      margin-bottom: 32px;
+      padding-bottom: 4px;
+    }
+  }
+
+  &__tab {
+    flex-shrink: 0;
+    padding: 10px 22px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: $lt-10;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    color: $primary-2;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      border-color: rgba(44, 255, 5, 0.28);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $accent-1;
+      outline-offset: 2px;
+    }
+
+    &--active {
+      background-color: $accent-1;
+      border-color: $accent-1;
+      color: $primary-5;
+    }
+  }
+
+  &__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 56px;
+
+    @media screen and (max-width: 1200px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__cta {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.skai-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 372px;
+  padding: 24px 28px;
+  border-radius: 24px;
+  background-color: $lt-10;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &--active {
+    border-color: rgba(44, 255, 5, 0.28);
+    box-shadow: 0 0 40px rgba(44, 255, 5, 0.08);
+  }
+
+  @media screen and (max-width: 768px) {
+    display: none;
+    min-height: 0;
+    padding: 20px;
+
+    &--active {
+      display: flex;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__agent {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    > span:last-child {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__avatar {
+    position: relative;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid $accent-1;
+    background-color: $primary-5;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 70% 15%;
+    }
+  }
+
+  &__name {
+    font-size: 15px;
+    font-weight: 600;
+    color: $primary-2;
+  }
+
+  &__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: $skai-muted;
+
+    &::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: $accent-1;
+    }
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 40px;
+    border: 1px solid rgba(44, 255, 5, 0.28);
+    font-size: 13px;
+    font-weight: 500;
+    color: $accent-1;
+    white-space: nowrap;
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__messages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: auto;
+  }
+
+  &__bubble {
+    max-width: 412px;
+    margin: 0;
+    padding: 11px 16px;
+    font-size: 15px;
+    line-height: 22px;
+    color: $primary-2 !important;
+
+    &--skai {
+      align-self: flex-start;
+      border-radius: 4px 16px 16px 16px;
+      background-color: rgba(44, 255, 5, 0.12);
+      border: 1px solid rgba(44, 255, 5, 0.28);
+    }
+
+    &--user {
+      align-self: flex-end;
+      border-radius: 16px 4px 16px 16px;
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    span {
+      padding: 6px 12px;
+      border-radius: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 13px;
+      color: $skai-muted;
+      white-space: nowrap;
+    }
+  }
+
+  &__mic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $accent-1;
+
+    .skai-icon {
+      color: $primary-5;
+    }
+  }
+}
+
+// ── Enterprise Integration (Figma 23:1504) ──
+
+.skai-integration {
+  background-color: color.mix(#000, $primary-5, 20%);
+
+  &__benefits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+
+    @media screen and (max-width: 992px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// Desktop: nodes positioned in % of the 1270 × 480 Figma diagram so the whole flow scales.
+// Below 1200px the flow becomes a vertical stack with CSS dashed connectors.
+.skai-flow {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1270 / 480;
+  margin-bottom: 56px;
+
+  &__dots {
+    position: absolute;
+    left: -0.08%;
+    top: -0.21%;
+    width: 97.8%;
+    height: 100.4%;
+    max-width: none;
+    pointer-events: none;
+  }
+
+  &__connectors {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    path {
+      stroke: $accent-1;
+      stroke-opacity: 0.7;
+      stroke-width: 2;
+      stroke-dasharray: 6 6;
+      animation: skai-dash 1.2s linear infinite;
+    }
+
+    circle {
+      fill: $accent-1;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.68px;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    &--sources {
+      left: 4.72%;
+      top: 2.08%;
+    }
+
+    &--gateway {
+      left: 33.86%;
+      top: 31.25%;
+    }
+
+    &--engine {
+      left: 59.84%;
+      top: 30.21%;
+    }
+  }
+
+  &__sources {
+    position: absolute;
+    left: 0.79%;
+    top: 12.08%;
+    width: 18.9%;
+    height: 75.83%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .skai-flow-node {
+      height: 84px;
+    }
+  }
+
+  &__engine-glow {
+    position: absolute;
+    left: 48.27%;
+    top: 8.33%;
+    width: 33.86%;
+    height: auto;
+    max-width: none;
+    pointer-events: none;
+    animation: skai-glow 4s ease-in-out infinite;
+  }
+
+  &__robot {
+    position: absolute;
+    left: 79.92%;
+    top: 4.17%;
+    width: 19.69%;
+    height: 91.67%;
+    border-radius: 24px;
+    border: 1px solid $accent-1;
+    background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(34, 51, 31, 1) 0%, $primary-5 100%);
+    overflow: hidden;
+  }
+
+  &__robot-floor,
+  &__robot-img {
+    position: absolute;
+    left: 50%;
+    max-width: none;
+    transform: translateX(-50%);
+  }
+
+  &__robot-floor {
+    top: 74.8%;
+    width: 72%;
+  }
+
+  &__robot-img {
+    top: 5.2%;
+    height: 73.6%;
+    width: auto;
+  }
+
+  &__robot-text {
+    position: absolute;
+    left: 23px;
+    bottom: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 13px;
+
+    .skai-flow-node__title {
+      font-size: 18px;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    aspect-ratio: auto;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+
+    &__dots,
+    &__connectors,
+    &__label,
+    &__engine-glow {
+      display: none;
+    }
+
+    &__sources,
+    &__robot {
+      position: relative;
+      inset: auto;
+      width: 100%;
+      height: auto;
+    }
+
+    &__sources {
+      gap: 16px;
+    }
+
+    &__robot {
+      height: 440px;
+    }
+
+    // Vertical dashed connector between stacked stages.
+    > .skai-flow__sources::after,
+    > .skai-flow-node--gateway::after,
+    > .skai-flow-node--engine::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      height: 48px;
+      border-left: 2px dashed rgba(44, 255, 5, 0.7);
+    }
+  }
+}
+
+.skai-flow-node {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 20px;
+  border-radius: 18px;
+  background-color: $primary-5;
+  border: 1px solid rgba(44, 255, 5, 0.28);
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background-color: rgba(44, 255, 5, 0.1);
+  }
+
+  > span:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  &__title {
+    font-size: 17px;
+    font-weight: 600;
+    color: $primary-2;
+    white-space: nowrap;
+  }
+
+  &__text {
+    font-size: 13px;
+    color: $skai-muted;
+    white-space: nowrap;
+  }
+
+  &--gateway,
+  &--engine {
+    position: absolute;
+  }
+
+  &--gateway {
+    left: 30.71%;
+    top: 39.58%;
+    width: 17.32%;
+    height: 100px;
+  }
+
+  &--engine {
+    left: 55.12%;
+    top: 37.5%;
+    width: 18.11%;
+    height: 120px;
+    border-color: $accent-1;
+    background: linear-gradient(90deg, rgba(30, 51, 24, 1) 0%, $primary-5 100%);
+    box-shadow: 0 0 50px rgba(44, 255, 5, 0.35);
+  }
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+    min-height: 84px;
+
+    &--gateway,
+    &--engine {
+      position: relative;
+      inset: auto;
+      width: 100%;
+    }
+  }
+}
+
+.skai-benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px 24px;
+  border-radius: 16px;
+  background-color: $lt-10;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  h3 {
+    margin: 0 0 4px;
+    font-size: 17px;
+    font-weight: 500;
+    color: $primary-2;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
+
+// ── Final CTA (Figma 24:1425) ──
+
+.skai-cta {
+  padding-top: 40px;
+  background-color: color.mix(#000, $primary-5, 20%);
+
+  &__panel {
+    position: relative;
+    min-height: 500px;
+    padding: 79px 69px 40px;
+    border-radius: 28px;
+    border: 1px solid rgba(44, 255, 5, 0.28);
+    background: radial-gradient(ellipse 80% 70% at 0% 50%, rgba(31, 58, 22, 1) 0%, $primary-5 100%);
+    overflow: hidden;
+  }
+
+  &__grid {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+
+  // Robot stage anchored to the panel's right edge; coordinates relative to Figma (759, -21).
+  &__stage {
+    position: absolute;
+    right: -9px;
+    top: -21px;
+    width: 520px;
+    height: 530px;
+    pointer-events: none;
+
+    img {
+      position: absolute;
+      max-width: none;
+    }
+  }
+
+  &__glow {
+    left: -60px;
+    top: -60px;
+    width: 640px;
+    height: 640px;
+    animation: skai-glow 6s ease-in-out infinite;
+  }
+
+  &__orbit {
+    &--lg {
+      left: 0;
+      top: 0;
+      width: 520px;
+      height: 520px;
+    }
+
+    &--md {
+      left: 70px;
+      top: 70px;
+      width: 380px;
+      height: 380px;
+    }
+  }
+
+  &__floor {
+    left: 120px;
+    top: 488px;
+    width: 280px;
+    height: 40px;
+  }
+
+  &__robot {
+    left: 260px;
+    top: 70px;
+    width: auto;
+    height: 446px;
+    transform: translateX(-50%);
+  }
+
+  &__content {
+    position: relative;
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+
+    .skai-eyebrow {
+      margin: 0;
+    }
+  }
+
+  &__title {
+    font-size: 58px;
+    line-height: 72px;
+    font-weight: 700;
+  }
+
+  &__description {
+    max-width: 520px;
+    margin: 0;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  &__contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin: 0;
+    font-size: 15px;
+
+    a {
+      color: $skai-muted;
+
+      &:hover {
+        color: $accent-1;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    &__stage {
+      right: -120px;
+      opacity: 0.6;
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    &__stage {
+      display: none;
+    }
+
+    &__title {
+      font-size: 44px;
+      line-height: 56px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    &__panel {
+      min-height: 0;
+      padding: 48px 24px 32px;
+    }
+
+    &__title {
+      font-size: 34px;
+      line-height: 44px;
+    }
+
+    &__description {
+      font-size: 16px;
+    }
+  }
+}
+
+// ── Home teaser (Figma 11:754) ──
+
+.skai-teaser {
+  padding: 90px 0;
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+
+  &__text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+
+    .skai-eyebrow {
+      margin: 0;
+    }
+
+    .skai-heading {
+      max-width: 600px;
+    }
+
+    .skai-actions {
+      padding-top: 8px;
+    }
+  }
+
+  &__description {
+    max-width: 600px;
+    margin: 0;
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  // Visual: Figma 11:804, a 560 × 500 frame.
+  &__visual {
+    position: relative;
+    flex: 0 0 560px;
+    height: 500px;
+
+    > img,
+    > span {
+      position: absolute;
+      max-width: none;
+    }
+  }
+
+  &__glow {
+    left: 30px;
+    top: -40px;
+    width: 540px;
+    height: 540px;
+    pointer-events: none;
+    animation: skai-glow 6s ease-in-out infinite;
+  }
+
+  &__hex {
+    width: 197px;
+    height: 202px;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      left: 5px;
+      top: -7px;
+      width: 186px;
+      height: 147px;
+      max-width: none;
+    }
+
+    &--green {
+      left: 330px;
+      top: 290px;
+    }
+
+    &--light {
+      left: -10px;
+      top: -20px;
+    }
+  }
+
+  &__ring {
+    &--lg {
+      left: 130px;
+      top: 443px;
+      width: 300px;
+      height: 54px;
+    }
+
+    &--sm {
+      left: 180px;
+      top: 452px;
+      width: 200px;
+      height: 36px;
+    }
+
+    &--glow {
+      left: 150px;
+      top: 450px;
+      width: 260px;
+      height: 40px;
+    }
+  }
+
+  &__robot {
+    left: 280px;
+    top: 15px;
+    width: auto;
+    height: 461px;
+    transform: translateX(-50%);
+  }
+
+  &__hotspot {
+    &--top-right {
+      left: 360px;
+      top: 70px;
+    }
+
+    &--left {
+      left: 0;
+      top: 190px;
+    }
+
+    &--right {
+      left: 380px;
+      top: 250px;
+    }
+  }
+
+  // Annotation on Figma 11:792: hover brightness +10%, arrow slides 4px right.
+  .skai-btn--primary:hover {
+    filter: brightness(1.1);
+
+    .skai-btn__arrow {
+      transform: translateX(4px);
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    &__visual {
+      flex-basis: 420px;
+      height: 420px;
+      transform: scale(0.8);
+      transform-origin: center left;
+    }
+
+    &__hotspot {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    &__row {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 24px;
+    }
+
+    &__visual {
+      flex-basis: auto;
+      width: 560px;
+      height: 500px;
+      margin: 0 auto -110px;
+      transform: scale(0.75);
+      transform-origin: top center;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 60px 0;
+
+    &__description {
+      font-size: 16px;
+    }
+
+    &__visual {
+      position: relative;
+      left: 50%;
+      margin: 0 0 -230px;
+      transform: translateX(-50%) scale(0.55);
+    }
+  }
+}
+
+.skai-btn__arrow {
+  transition: transform 0.3s ease;
+}

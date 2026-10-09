@@ -15,6 +15,9 @@
   "description": "We offer comprehensive IT services and cutting-edge travel technology solutions that help businesses in the travel industry succeed. Whether you are a travel agency, OTA, or Travel Management Company, we have the expertise and tools to drive your business forward.",
   "slides": [
     {
+      "image": "robot-images/robot-banner.jpg"
+    },
+    {
       "image": "img/photo/1.jpg"
     },
     {

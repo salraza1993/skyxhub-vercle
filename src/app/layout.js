@@ -63,6 +63,7 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
+  const isAzure = typeof window !== "undefined" && window.location.host.includes("azurewebsites.net");
   return (
     <html lang="en" className={kanit.variable}>
       <head>
@@ -72,6 +73,7 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="/css/plugins/bootstrap-grid.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
         <link rel="stylesheet" href="/css/plugins/swiper.min.css" />
+        {isAzure && <meta name="robots" content="noindex, nofollow" />}
       </head>
       {/* <!-- Start Google Tag Manager --> */}
       <Script id="google-tag-manager" strategy="afterInteractive">
@@ -83,6 +85,7 @@ export default function RootLayout({ children }) {
             })(window,document,'script','dataLayer','GTM-NRJVGVFM');
         `}
       </Script>
+      <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></Script>
       {/* <!-- End Google Tag Manager --> */}
       <body>
         <SwiperProvider>

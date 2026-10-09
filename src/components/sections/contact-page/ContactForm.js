@@ -1,8 +1,11 @@
 'use client'
 
 import { useState } from "react";
+import { TurnstileCaptcha } from './../../TurnstileCaptcha';
 
 function ContactForm() {
+  const [token, setToken] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -26,6 +29,7 @@ function ContactForm() {
   }
 
   const resetForm = () => {
+    setLoading(false);
     setFormData({
       firstName: '',
       lastName: '',
@@ -40,6 +44,8 @@ function ContactForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!token) return alert('Captcha not verified');
+    setLoading(true);
     if(!isFormValid()) {
       setFormErrors('Please fill in all fields.');
       return;
@@ -47,13 +53,13 @@ function ContactForm() {
     const response = await fetch('/api/send-email', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ formType: 'contactPage', formData }),
+      body: JSON.stringify({ formData, token }),
     });
 
     resetForm();
     setFormErrors(false);
     if (response.ok) {
-      setIsFormSubmitted('Form submitted successfully!, \n we will get back to you shortly');
+      setIsFormSubmitted('Form submitted successfully! We will get back to you shortly.');
       setTimeout(() => setIsFormSubmitted(false), 3000);
     } else {
       setIsFormSubmitted(false);
@@ -222,6 +228,7 @@ function ContactForm() {
               </div>
             </div>
           )}
+          <TurnstileCaptcha onVerify={setToken} />
           <div className="col-lg-12">
             <button type="submit" className="mil-button mil-border mil-fw">
               <span>Submit Now</span>

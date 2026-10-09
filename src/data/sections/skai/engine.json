@@ -1,0 +1,22 @@
+{
+  "eyebrow": "AI Interaction Engine",
+  "title": [
+    { "text": "The Intelligence Behind " },
+    { "text": "Every Conversation", "accent": true }
+  ],
+  "description": "Our AI Interaction Engine powers SKAI’s ability to understand, decide and respond — in any language, in real time.",
+  "nodeLabels": [
+    { "label": "Language Understanding", "position": "language" },
+    { "label": "Intent Detection", "position": "intent" },
+    { "label": "Multilingual", "position": "multilingual" },
+    { "label": "Real-Time Response", "position": "realtime" },
+    { "label": "Enterprise Data", "position": "enterprise" }
+  ],
+  "features": [
+    { "icon": "message", "title": "Natural Language Understanding", "text": "Understands context, nuance and follow-up questions." },
+    { "icon": "target", "title": "Intent Detection", "text": "Identifies what each person wants and selects the right action." },
+    { "icon": "globe", "title": "Multilingual Communication", "text": "Speaks and understands multiple languages, including Arabic and English." },
+    { "icon": "zap", "title": "Real Time Responses", "text": "Low-latency replies that keep every interaction natural." },
+    { "icon": "plug", "title": "Enterprise Integration", "text": "Draws on live data from CRM, booking and knowledge systems." }
+  ]
+}

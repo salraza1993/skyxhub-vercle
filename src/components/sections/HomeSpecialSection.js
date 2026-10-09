@@ -12,7 +12,7 @@ function HomeSpecialSection() {
           <div className="row justify-content-between align-items-center">
             <div className="col-xl-4">
               <span className="mil-suptitle mil-suptitle-2 mil-light mil-mb-30">
-                Smart, Scalable, Seamless Airline Tech
+                Empowering Global Travel Through Digital Innovation
               </span>
               <h2 className="mil-light mil-mb-60">
                 Comprehensive <span className="mil-accent">B2B2B Booking</span>{" "} and <span className="mil-accent">Distribution</span> Platform

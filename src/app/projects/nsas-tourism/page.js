@@ -19,7 +19,7 @@ function ProjectDetails() {
   return (
     <Layouts>
       <PageBanner
-        pageName={"ndc-x"}
+        pageName={"nsas-tourism"}
         pageTitle={bannerTitle}
         bannerPath={"/img/photo/hero-banner-team.jpg"}
       />
@@ -68,8 +68,10 @@ function ProjectDetails() {
                 
               </p>
               <div className="project-image mil-mb-20 mil-bordered">
-                <img src="/img/partners/nsas-tourism-bg.jpg" alt="NDC-X Project" />
+                <img src="/img/partners/nsas-tourism-bg.jpg" alt="NSAS Tourism Project" />
               </div>
+              <br />
+              <a href="https://nsas-tourism.com/" target="_blank" className="mil-button mil-border mil-mb-30"><span>Visit Website</span></a>
             </div>
           </div>
         </div>

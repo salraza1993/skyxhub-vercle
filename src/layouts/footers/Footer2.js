@@ -34,8 +34,9 @@ const Footer2 = () => {
                 className="mil-light mil-light-soft"
                 style={{ marginBottom: 45 }}
               >
-                City Pharmacy Building, M02 Floor, Street 22A, Opp Port Saeed 1,
-                Bus Stop, Al Khabaisi, Dubai, United Arab Emirates
+                {/* City Pharmacy Building, M02 Floor, Street 22A, Opp Port Saeed 1,
+                Bus Stop, Al Khabaisi, Dubai, United Arab Emirates */}
+                SkyXHub Technology, 786J+XPR, Al Khabaisi - Dubai - United Arab Emirates
               </p>
               <ul className="mil-simple-list mil-mb-15">
                 <li className="mil-light">
@@ -50,7 +51,29 @@ const Footer2 = () => {
             </div>
             <div className="col-md-8 col-lg-7 col-xl-7">
               <div className="row justify-content-end">
-                <div className="col-md-4 col-lg-4 mil-mb-60">
+                <div className="col-12 col-sm-6 col-xl-3 mil-mb-60">
+                  <h4 className="mil-list-title mil-light mil-mb-60">
+                    AI &amp; Robotics
+                  </h4>
+                  <ul className="mil-hover-link-list mil-light">
+                    <li>
+                      <Link href="/skai#meet">Meet SKAI</Link>
+                    </li>
+                    <li>
+                      <Link href="/skai#engine">AI Interaction Engine</Link>
+                    </li>
+                    <li>
+                      <Link href="/skai#physical">Physical Intelligence</Link>
+                    </li>
+                    <li>
+                      <Link href="/skai#raas">Robot As A Service</Link>
+                    </li>
+                    <li>
+                      <Link href="/skai#industries">Industries</Link>
+                    </li>
+                  </ul>
+                </div>
+                <div className="col-12 col-sm-6 col-xl-3 mil-mb-60">
                   <h4 className="mil-list-title mil-light mil-mb-60">Social</h4>
                   <ul className="mil-hover-link-list mil-light">
                     <li>
@@ -92,7 +115,7 @@ const Footer2 = () => {
                     </li>
                   </ul>
                 </div>
-                <div className="col-md-4 col-lg-4 mil-mb-60" target="_blank">
+                <div className="col-12 col-sm-6 col-xl-3 mil-mb-60" target="_blank">
                   <h4 className="mil-list-title mil-light mil-mb-60">
                     Support
                   </h4>
@@ -111,7 +134,7 @@ const Footer2 = () => {
                     </li>
                   </ul>
                 </div>
-                <div className="col-md-4 col-lg-4 mil-mb-60">
+                <div className="col-12 col-sm-6 col-xl-3 mil-mb-60">
                   <h4 className="mil-list-title mil-light mil-mb-60">Links</h4>
                   <ul className="mil-hover-link-list mil-light">
                     <li>

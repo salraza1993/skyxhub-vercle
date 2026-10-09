@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // output: 'export',
   // React configuration
   reactStrictMode: true,
   // Next.js 15 App Router optimizations

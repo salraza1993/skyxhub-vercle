@@ -18,6 +18,10 @@ const DefaultHeader = ({ transparent, headerTop, extraClass }) => {
       link: "/solutions",
     },
     {
+      title: "AI & Robotics",
+      link: "/skai",
+    },
+    {
       title: "Our Projects",
       link: "/projects",
     },

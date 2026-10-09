@@ -26,7 +26,7 @@ function SubscribeForm() {
     const response = await fetch('/api/send-email', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ formType: 'newsletter', formData: { email } }),
+      body: JSON.stringify({ formData: { email }, formType: 'newsletter' }),
     });
 
     setEmail('');

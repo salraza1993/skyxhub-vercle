@@ -1,0 +1,24 @@
+{
+  "eyebrow": "Enterprise Integration",
+  "title": [
+    { "text": "Connected to Your " },
+    { "text": "Enterprise Systems", "accent": true }
+  ],
+  "description": "SKAI plugs into your enterprise stack through a secure API gateway — so every answer is accurate, personal and up to date.",
+  "sources": {
+    "label": "Data Sources",
+    "items": [
+      { "icon": "users", "title": "CRM", "text": "Customer profiles & leads" },
+      { "icon": "database", "title": "ERP", "text": "Operations & inventory" },
+      { "icon": "plane", "title": "Booking Engines", "text": "Flights, hotels & events" }
+    ]
+  },
+  "gateway": { "label": "Secure Gateway", "icon": "api", "title": "API Gateway", "text": "Secure REST · Webhooks" },
+  "engine": { "label": "Intelligence", "icon": "brain", "title": "AI Engine", "text": "NLU · Intent · Response" },
+  "robot": { "title": "SKAI Robot", "tags": "Voice · Motion · Actions" },
+  "benefits": [
+    { "icon": "check", "title": "Secure by design", "text": "Encrypted connections and role-based access to enterprise data." },
+    { "icon": "zap", "title": "Real-time sync", "text": "Live inventory, schedules and customer context in every reply." },
+    { "icon": "plug", "title": "Plug-in architecture", "text": "Standard APIs and webhooks for fast, low-effort integration." }
+  ]
+}

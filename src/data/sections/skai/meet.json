@@ -1,0 +1,41 @@
+{
+  "eyebrow": "Meet SKAI",
+  "title": [
+    { "text": "Meet " },
+    { "text": "SKAI", "accent": true },
+    { "text": " — The Face of " },
+    { "text": "Physical Intelligence", "accent": true }
+  ],
+  "description": "Designed and developed by SkyXHub Technologies, SKAI combines conversational AI with a humanoid form to create memorable, intelligent interactions.",
+  "stage": {
+    "hotspots": [
+      { "label": "Conversational AI", "position": "left" },
+      { "label": "Vision & Perception", "position": "top-right" },
+      { "label": "Expressive Gestures", "position": "right" }
+    ],
+    "caption": {
+      "title": "SKAI Humanoid Robot",
+      "tags": "AI-powered · Multilingual · Enterprise-ready"
+    }
+  },
+  "pillars": [
+    {
+      "number": "01",
+      "icon": "bot",
+      "title": "AI-Powered Humanoid Robot",
+      "text": "Conversational intelligence in a humanoid form — SKAI listens, understands and responds naturally."
+    },
+    {
+      "number": "02",
+      "icon": "sparkles",
+      "title": "Event Engagement Platform",
+      "text": "Turns booths, launches and venues into interactive experiences that draw and hold crowds."
+    },
+    {
+      "number": "03",
+      "icon": "plug",
+      "title": "Enterprise Interaction System",
+      "text": "Connects to your enterprise systems to answer, assist and capture data in real time."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+services:
+  web:
+    container_name: nextjs-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+      - SENDGRID_FROM_EMAIL=${SENDGRID_FROM_EMAIL}
+      - CONTACT_RECEIVER=${CONTACT_RECEIVER}
+      - NSAS_TOURSIM_WP_JSON_URL=${NSAS_TOURSIM_WP_JSON_URL}
+    ports:
+      - 3000:3000
+    networks:
+      - my_network
+
+networks:
+  my_network:
